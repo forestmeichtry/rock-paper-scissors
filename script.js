@@ -38,7 +38,27 @@ function isValid(input) {
     }
 }
 
-function fiveRounds() {
+// Plays a round of RPS using the clicked button as the user selection, results are displayed in the console
+function buttonClick() {
+    let playerSelection = this.id;
+    let computerSelection = getComputerChoice();
+    let result = playRound(playerSelection, computerSelection);
+
+    if (result === 'tie') {
+        console.log("It's a Tie! You both chose " + playerSelection + ".");
+    } else if (result === 'lose') {
+        console.log("You Lose! " + computerSelection + " beats " + playerSelection + ".");
+    } else if (result === 'win') {
+        console.log("You Win! " + playerSelection + " beats " + computerSelection + ".");
+    }
+}
+
+let buttons = document.querySelectorAll('button');
+buttons.forEach(button => {
+    button.addEventListener('click', buttonClick);
+});
+
+/* function fiveRounds() {
     let playerSelection = '';
     let score = 0;
     for (let i = 0; i < 5; i++) {
@@ -61,4 +81,4 @@ function fiveRounds() {
         playerSelection = '';
     }
     console.log("You scored " + score + " out of 5 rounds!");
-}
+} */
