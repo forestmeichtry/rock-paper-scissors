@@ -2,14 +2,58 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0;
+    min-height: 100vh;
     background-color: lightblue;
+}
+
+input {
+    width: 200px;
+    height: 200px;
+    border-style: solid;
 }
 
 .button-container {
     display: flex;
     width: 400px;
-    height: 100px;
     justify-content: center;
     align-items: center;
     gap: 30px;
+    margin-bottom: 30px;
+}
+
+#results {
+    font-size: larger;
+    font-weight: bold;
+}
+
+.score-board {
+    display: flex;
+    gap: 60px;
+    margin-top: 30px;
+}
+
+.score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.mouseover {
+    transform: scale(1.2);
+    border-color: #0b2127;
+    box-shadow: 0 0 1rem #234e58;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: auto;
+    color: aliceblue;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: #234e58;
+    width: 100%;
+    height: 40px;
 }

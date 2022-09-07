@@ -43,19 +43,44 @@ function buttonClick() {
     let playerSelection = this.id;
     let computerSelection = getComputerChoice();
     let result = playRound(playerSelection, computerSelection);
+    let resultDisplay = document.getElementById('results');
+    let playerScore = document.getElementById('player-score');
+    let computerScore = document.getElementById('computer-score');
 
     if (result === 'tie') {
-        console.log("It's a Tie! You both chose " + playerSelection + ".");
+        resultDisplay.textContent = "It's a Tie! You both chose " + playerSelection;
     } else if (result === 'lose') {
-        console.log("You Lose! " + computerSelection + " beats " + playerSelection + ".");
+        resultDisplay.textContent = "You Lose! " + computerSelection + " beats " + playerSelection;
+        computerScore.textContent = parseInt(computerScore.textContent) + 1;
     } else if (result === 'win') {
-        console.log("You Win! " + playerSelection + " beats " + computerSelection + ".");
+        resultDisplay.textContent = "You Win! " + playerSelection + " beats " + computerSelection;
+        playerScore.textContent = parseInt(playerScore.textContent) + 1;
+    }
+
+    if (playerScore.textContent === '5') {
+        resultDisplay.textContent = 'Congratulations! You beat the computer best of 5! Play again?';
+        playerScore.textContent = '0';
+        computerScore.textContent = '0';
+    } else if (computerScore.textContent === '5') {
+        resultDisplay.textContent = 'Sorry, you lost the best of 5. Try again?';
+        playerScore.textContent = '0';
+        computerScore.textContent = '0';
     }
 }
 
-let buttons = document.querySelectorAll('button');
+function mouseOff() {
+    this.classList.remove('mouseover');
+}
+
+function mouseOver() {
+    this.classList.add('mouseover');
+    this.addEventListener('mouseout', mouseOff, {once : true});
+}
+
+let buttons = document.querySelectorAll('input');
 buttons.forEach(button => {
     button.addEventListener('click', buttonClick);
+    button.addEventListener('mouseover', mouseOver);
 });
 
 /* function fiveRounds() {
